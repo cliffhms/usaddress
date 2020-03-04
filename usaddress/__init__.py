@@ -131,9 +131,17 @@ STREET_NAMES = {
     'villages', 'ville', 'villg', 'villiage', 'vis', 'vist', 'vista', 'vl',
     'vlg', 'vlgs', 'vlly', 'vly', 'vlys', 'vst', 'vsta', 'vw', 'vws', 'walk',
     'walks', 'wall', 'way', 'ways', 'well', 'wells', 'wl', 'wls', 'wy', 'xc',
-    'xg', 'xing', 'xrd', 'xrds'
+    'xg', 'xing', 'xrd', 'xrds', 'avenida', 'calle', 'cll', 'caminto', 'cmt',
+    'camino', 'cam', 'cerrada', 'cer', 'circulo', 'entrada', 'ent', 'paseo',
+    'pso', 'placita', 'pla', 'rancho', 'rch', 'vereda', 'ver', 'vis', 'circa'
 }
-
+"""
+Added the standard Spanish street names and abbreviations, if they were not
+included, from https://pe.usps.com/text/pub28/28aph.htm.
+'avenida', 'calle', 'cll', 'caminto', 'cmt', 'camino', 'cam', 'cerrada', 'cer',
+'circulo', 'entrada', 'ent', 'paseo', 'pso', 'placita', 'pla', 'rancho', 'rch',
+'vereda', 'ver', 'vis'
+"""
 
 try:
     TAGGER = pycrfsuite.Tagger()

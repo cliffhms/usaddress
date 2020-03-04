@@ -1,18 +1,27 @@
 usaddress
 =================
-[![Build Status](https://travis-ci.org/datamade/usaddress.svg?branch=master)](https://travis-ci.org/datamade/usaddress)[![Build status](https://ci.appveyor.com/api/projects/status/5mbcd8ku0tm66noq?svg=true)](https://ci.appveyor.com/project/fgregg/usaddress)
+[![Build Status](https://travis-ci.org/datamade/usaddress.svg?branch=master)](https://travis-ci.org/datamade/usaddress)
+[![Build status](https://ci.appveyor.com/api/projects/status/5mbcd8ku0tm66noq?svg=true)](https://ci.appveyor.com/project
+/fgregg/usaddress)
 
-usaddress is a Python library for parsing unstructured address strings into address components, using advanced NLP methods. Try it out on our [web interface](https://parserator.datamade.us/usaddress)! For those who aren't Python developers, we also have an [API](https://parserator.datamade.us/api-docs).
+usaddress is a Python library for parsing unstructured address strings into address components, using advanced NLP
+methods. Try it out on our [web interface](https://parserator.datamade.us/usaddress)! For those who aren't Python
+developers, we also have an [API](https://parserator.datamade.us/api-docs).
 
-**What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying address components, even in tricky cases where rule-based parsers typically break down.
+**What this can do:** Using a probabilistic model, it makes (very educated) guesses in identifying address components,
+even in tricky cases where rule-based parsers typically break down.
 
-**What this cannot do:** It cannot identify address components with perfect accuracy, nor can it verify that a given address is correct/valid.
+**What this cannot do:** It cannot identify address components with perfect accuracy, nor can it verify that a given
+address is correct/valid.
 
-It also does not normalize the address. However, [this library built on top of usaddress does](https://github.com/GreenBuildingRegistry/usaddress-scourgify).
+It also does not normalize the address. However, [this library built on top of usaddress does](https://github.com/
+GreenBuildingRegistry/usaddress-scourgify).
 
 ## How to use the usaddress python library
 
-1. Install usaddress with [pip](https://pip.readthedocs.io/en/latest/quickstart.html), a tool for installing and managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)).
+1. Install usaddress with [pip](https://pip.readthedocs.io/en/latest/quickstart.html), a tool for installing and
+managing python packages ([beginner's guide here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python
+/)).
 
   In the terminal,
   
@@ -29,17 +38,23 @@ It also does not normalize the address. However, [this library built on top of u
   addr='123 Main St. Suite 100 Chicago, IL'
   
   # The parse method will split your address string into components, and label each component.
-  # expected output: [(u'123', 'AddressNumber'), (u'Main', 'StreetName'), (u'St.', 'StreetNamePostType'), (u'Suite', 'OccupancyType'), (u'100', 'OccupancyIdentifier'), (u'Chicago,', 'PlaceName'), (u'IL', 'StateName')]
+  # expected output: [(u'123', 'AddressNumber'), (u'Main', 'StreetName'), (u'St.', 'StreetNamePostType'), (u'Suite', '
+  OccupancyType'), (u'100', 'OccupancyIdentifier'), (u'Chicago,', 'PlaceName'), (u'IL', 'StateName')]
   usaddress.parse(addr)
   
   # The tag method will try to be a little smarter
   # it will merge consecutive components, strip commas, & return an address type
-  # expected output: (OrderedDict([('AddressNumber', u'123'), ('StreetName', u'Main'), ('StreetNamePostType', u'St.'), ('OccupancyType', u'Suite'), ('OccupancyIdentifier', u'100'), ('PlaceName', u'Chicago'), ('StateName', u'IL')]), 'Street Address')
+  # expected output: (OrderedDict([('AddressNumber', u'123'), ('StreetName', u'Main'), ('StreetNamePostType', u'St.'),
+  ('OccupancyType', u'Suite'), ('OccupancyIdentifier', u'100'), ('PlaceName', u'Chicago'), ('StateName', u'IL')]),
+  'Street Address')
   usaddress.tag(addr)
   ```
 
 ## How to use this development code (for the nerds)
-usaddress uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of conditional random fields. Parserator allows you to train the usaddress parser's model (a .crfsuite settings file) on labeled training data, and provides tools for adding new labeled training data.
+usaddress uses [parserator](https://github.com/datamade/parserator), a library for making and improving probabilistic
+parsers - specifically, parsers that use [python-crfsuite](https://github.com/tpeng/python-crfsuite)'s implementation of
+ conditional random fields. Parserator allows you to train the usaddress parser's model (a .crfsuite settings file) on
+ labeled training data, and provides tools for adding new labeled training data.
 
 ### Building & testing the code in this repo
 
@@ -59,11 +74,15 @@ Then run the testing suite to confirm that everything is working properly:
    nosetests .
    ```
    
-Having trouble building the code? [Open an issue](https://github.com/datamade/usaddress/issues/new) and we'd be glad to help you troubleshoot.
+Having trouble building the code? [Open an issue](https://github.com/datamade/usaddress/issues/new) and we'd be glad to
+help you troubleshoot.
 
 ### Adding new training data
 
-If usaddress is consistently failing on particular address patterns, you can adjust the parser's behavior by adding new training data to the model. [Follow our guide in the training directory](https://github.com/datamade/usaddress/blob/master/training/README.md), and be sure to make a pull request so that we can incorporate your contribution into our next release!
+If usaddress is consistently failing on particular address patterns, you can adjust the parser's behavior by adding new
+training data to the model. [Follow our guide in the training directory](https://github.com/datamade/usaddress/blob/
+master/training/README.md), and be sure to make a pull request so that we can incorporate your contribution into our
+next release!
 
 ## Important links
 
@@ -86,7 +105,11 @@ If usaddress is consistently failing on particular address patterns, you can adj
 
 Report issues in the [issue tracker](https://github.com/datamade/usaddress/issues)
 
-If an address was parsed incorrectly, please let us know! You can either [open an issue](https://github.com/datamade/usaddress/issues/new) or (if you're adventurous) [add new training data to improve the parser's model.](https://github.com/datamade/usaddress/blob/master/training/README.md) When possible, please send over a few real-world examples of similar address patterns, along with some info about the source of the data - this will help us train the parser and improve its performance.
+If an address was parsed incorrectly, please let us know! You can either [open an issue](https://github.com/datamade/
+usaddress/issues/new) or (if you're adventurous) [add new training data to improve the parser's model.](https://github.
+com/datamade/usaddress/blob/master/training/README.md) When possible, please send over a few real-world examples of
+similar address patterns, along with some info about the source of the data - this will help us train the parser and
+improve its performance.
 
 If something in the library is not behaving intuitively, it is a bug, and should be reported.
 
@@ -98,4 +121,5 @@ If something in the library is not behaving intuitively, it is a bug, and should
 
 ## Copyright
 
-Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/usaddress/blob/master/LICENSE).
+Copyright (c) 2014 Atlanta Journal Constitution. Released under the [MIT License](https://github.com/datamade/usaddress
+/blob/master/LICENSE).
