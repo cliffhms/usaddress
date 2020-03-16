@@ -55,6 +55,8 @@ GROUP_LABEL = 'AddressCollection'
 MODEL_FILE = 'usaddr.crfsuite'
 MODEL_PATH = os.path.split(os.path.abspath(__file__))[0] + '/' + MODEL_FILE
 
+print(MODEL_PATH)
+
 DIRECTIONS = set(['n', 's', 'e', 'w',
                   'ne', 'nw', 'se', 'sw',
                   'north', 'south', 'east', 'west',
